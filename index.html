@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>指尖上的戀愛密碼</title>
+    <title>指尖上的戀愛密碼 💕 專屬心理測驗</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: #fcf6f5;
             color: #333;
             margin: 0;
@@ -21,17 +21,37 @@
             max-width: 400px;
             background: #ffffff;
             padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(212, 163, 115, 0.15);
             text-align: center;
+            box-sizing: border-box;
         }
-        select, button {
+        h2 {
+            color: #b08968;
+            margin-bottom: 5px;
+        }
+        .step-box {
+            background: #faf3ee;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            text-align: left;
+            margin: 15px 0;
+            color: #582f0e;
+            line-height: 1.5;
+        }
+        input[type="number"], button {
             width: 100%;
             padding: 12px;
             margin-top: 15px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
+            border-radius: 10px;
+            border: 2px solid #e6ccb2;
             font-size: 16px;
+            box-sizing: border-box;
+            outline: none;
+        }
+        input[type="number"]:focus {
+            border-color: #b08968;
         }
         button {
             background-color: #b08968;
@@ -39,14 +59,39 @@
             border: none;
             font-weight: bold;
             cursor: pointer;
+            box-shadow: 0 4px 12px rgba(176, 137, 104, 0.3);
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #9c7553;
         }
         .result {
             display: none;
-            margin-top: 20px;
-            padding: 15px;
+            margin-top: 15px;
+            padding: 20px;
+            background: #fff8f0;
+            border: 2px dashed #d4a373;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .size-badge {
+            font-size: 28px;
+            font-weight: bold;
+            color: #b08968;
+            margin: 10px 0;
+            background: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #e6ccb2;
+        }
+        .share-hint {
+            font-size: 13px;
+            color: #7f5539;
+            margin-top: 15px;
+            line-height: 1.6;
             background: #faf3ee;
+            padding: 10px;
             border-radius: 8px;
-            text-align: left;
         }
     </style>
 </head>
@@ -54,45 +99,63 @@
 
 <div class="container">
     <h2>✨ 指尖上的戀愛密碼 ✨</h2>
-    <p style="font-size: 14px; color: #666;">量一量左手無名指周長，測出你的戀愛人格！</p>
+    <p style="font-size: 13px; color: #7f5539;">據說從左手無名指的周長，可以看出隱性戀愛人格！</p>
     
     <div id="quiz-box">
-        <select id="ring-size">
-            <option value="" disabled selected>請選擇你的指圍公分...</option>
-            <option value="1">4.5 cm - 4.9 cm (精緻小巧型)</option>
-            <option value="2">5.0 cm - 5.4 cm (溫柔平衡型)</option>
-            <option value="3">5.5 cm - 5.9 cm (大器率性型)</option>
-            <option value="4">6.0 cm 以上 (福氣富貴型)</option>
-        </select>
-        <button onclick="getResult()">查看結果 🔮</button>
+        <div class="step-box">
+            <strong>測驗方法：</strong><br>
+            1. 用細線或紙條繞<strong>左手無名指</strong>一圈。<br>
+            2. 用尺量出長度（公分 cm），輸入下方！
+        </div>
+
+        <input type="number" id="ring-cm" step="0.1" placeholder="輸入測出來的公分數 (例: 5.2)">
+        <button onclick="getResult()">解鎖我的戀愛人格 🔮</button>
     </div>
 
     <div id="result-box" class="result">
-        <h3 id="res-title" style="color: #9c7553; margin-top:0;"></h3>
-        <p id="res-desc" style="font-size: 14px; line-height: 1.5;"></p>
-        <button onclick="location.reload()" style="background-color: #d4a373; margin-top: 15px;">重新測驗</button>
+        <div style="font-size: 13px; color: #888;">您的專屬測驗結果</div>
+        <div class="size-badge" id="res-size-display">5.2 cm</div>
+        <h3 id="res-title" style="color: #9c7553; margin: 10px 0;"></h3>
+        <p id="res-desc" style="font-size: 13px; line-height: 1.6; color: #555; text-align: left;"></p>
+        
+        <div class="share-hint">
+            📷 <strong>通關密語：</strong>覺得準嗎？快把畫面截圖傳給男友看看，證明你是哪種人格吧！✨
+        </div>
+
+        <button onclick="location.reload()" style="background-color: #d4a373; margin-top: 15px; padding: 10px;">重新測驗 🔄</button>
     </div>
 </div>
 
 <script>
     function getResult() {
-        var select = document.getElementById("ring-size");
-        var val = select.value;
+        var cmInput = document.getElementById("ring-cm").value;
+        var cm = parseFloat(cmInput);
         
-        if (!val) {
-            alert("請先選擇指圍範圍喔！");
+        if (!cmInput || isNaN(cm) || cm <= 0) {
+            alert("請輸入有效的公分數喔！（例如 5.1）");
             return;
         }
 
-        var data = {
-            "1": { title: "【4.5 - 4.9 cm】精緻小巧型 (貓系)", desc: "獨立、聰明，對生活非常有品味。在感情裡慢熟但認定了就會全心投入！" },
-            "2": { title: "【5.0 - 5.4 cm】溫柔平衡型 (犬系)", desc: "善解人意、超高同理心。對另一半超級貼心，是把生活打理得溫馨的小太陽！" },
-            "3": { title: "【5.5 - 5.9 cm】大器率性型 (女王)", desc: "很有主見、執行力強，私底下有反差萌的小女人特質，魅力十足！" },
-            "4": { title: "【6.0 cm 以上】福氣富貴型 (聚寶盆)", desc: "天生帶有領導者氣場，金錢與貴人運極旺，熱愛質感生活的幸運兒！" }
-        };
+        var title = "";
+        var desc = "";
 
-        document.getElementById("res-title").innerText = data[val].title;
-        document.getElementById("res-desc").innerText = data[val].desc;
+        if (cm < 5.0) {
+            title = "精緻小巧型 (貓系人格 🐱)";
+            desc = "獨立、聰明，對生活非常有品味。在感情裡屬於慢熟路線，但認定了就會全心投入！";
+        } else if (cm >= 5.0 && cm < 5.5) {
+            title = "溫柔平衡型 (犬系人格 🐶)";
+            desc = "善解人意、超高同理心。對另一半超級貼心，是把生活打理得溫馨的小太陽！";
+        } else if (cm >= 5.5 && cm < 6.0) {
+            title = "大器率性型 (女王人格 👑)";
+            desc = "很有主見、執行力強，私底下有反差萌的小女人特質，魅力十足！";
+        } else {
+            title = "福氣富貴型 (聚寶盆人格 🌟)";
+            desc = "天生帶有領導者氣場，金錢與貴人運極旺，熱愛質感生活的幸運兒！";
+        }
+
+        document.getElementById("res-size-display").innerText = "指圍尺寸：" + cm + " cm";
+        document.getElementById("res-title").innerText = title;
+        document.getElementById("res-desc").innerText = desc;
         
         document.getElementById("quiz-box").style.display = "none";
         document.getElementById("result-box").style.display = "block";
