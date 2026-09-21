@@ -3,295 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>左手無名指戀愛人格與運勢測驗</title>
-    <!-- Tailwind CSS for modern styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter & Noto Serif TC for elegant typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <!-- FontAwesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        champagne: {
-                            50: '#FDFBF7',
-                            100: '#F7F2E7',
-                            200: '#EFE5D0',
-                            300: '#E3D2AD',
-                            400: '#D4BC88',
-                            500: '#C2A363',
-                        },
-                        rosegold: {
-                            50: '#FCF5F5',
-                            100: '#F6E6E6',
-                            200: '#EBD1D1',
-                            300: '#DBAEAE',
-                            400: '#C48282',
-                            500: '#B06161',
-                        }
-                    },
-                    fontFamily: {
-                        serif: ['"Noto Serif TC"', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <title>指尖上的戀愛密碼 💕 專屬心理測驗</title>
     <style>
+        :root {
+            --primary-color: #d4a373;
+            --accent-color: #faedcd;
+            --bg-color: #fcf6f5;
+            --text-color: #333333;
+            --card-bg: #ffffff;
+            --shadow: 0 10px 25px rgba(212, 163, 115, 0.15);
+        }
+
         body {
-            font-family: 'Inter', 'Noto Serif TC', sans-serif;
-            background: linear-gradient(135deg, #FDFBF7 0%, #F6E6E6 100%);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
         }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(212, 188, 136, 0.3);
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            box-sizing: border-box;
+            text-align: center;
         }
-        .gold-gradient-text {
-            background: linear-gradient(135deg, #C2A363 0%, #9C7D38 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+
+        h1 {
+            color: #b08968;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #7f5539;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .step-box {
+            margin-bottom: 20px;
+            text-align: left;
+            background: #faf3ee;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .step-box ol {
+            margin: 5px 0 0 20px;
+            padding: 0;
+        }
+
+        .input-group {
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #582f0e;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e6ccb2;
+            border-radius: 10px;
+            font-size: 16px;
+            background: #fff;
+            color: #333;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        select:focus {
+            border-color: #b08968;
+        }
+
+        button {
+            background-color: #b08968;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            width: 100%;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.1s;
+            box-shadow: 0 4px 12px rgba(176, 137, 104, 0.3);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        button:hover {
+            background-color: #9c7553;
+        }
+
+        .result-container {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-card {
+            background: #fff8f0;
+            border: 2px dashed #d4a373;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .result-card h3 {
+            color: #9c7553;
+            margin-top: 0;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e6ccb2;
+            color: #582f0e;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .footer-note {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #a3b18a;
         }
     </style>
 </head>
-<body class="text-stone-700 flex flex-col min-h-screen">
+<body>
 
-    <header class="w-full py-6 px-4 text-center border-b border-champagne-200 bg-white/40">
-        <div class="max-w-md mx-auto">
-            <span class="text-xs uppercase tracking-widest text-rosegold-500 font-semibold mb-1 block">✨ Special Japanese Psychological Test</span>
-            <h1 class="text-2xl font-serif font-bold gold-gradient-text">左手無名指戀愛人格與運勢</h1>
+<div class="container">
+    <div id="quiz-screen">
+        <h1>✨ 指尖上的戀愛密碼 ✨</h1>
+        <p class="subtitle">據說從「左手無名指的周長」，可以看出一個人的隱性戀愛人格與天生特質！快來測看看你是哪一種～</p>
+        
+        <div class="step-box">
+            <strong>測驗步驟：</strong>
+            <ol>
+                <li>準備一條細線或紙條。</li>
+                <li>繞你的<strong>左手無名指</strong>一圈（剛好順著手指即可）。</li>
+                <li>用直尺量出那一圈的長度（公分 cm），並在下方選擇對應的範圍！</li>
+            </ol>
         </div>
-    </header>
 
-    <main class="flex-grow flex items-center justify-center p-4 sm:p-6">
-        <div class="w-full max-w-md glass-card rounded-3xl shadow-xl p-6 sm:p-8 transition-all duration-300">
-            
-            <!-- STEP 1: Introduction & Instructions -->
-            <div id="step-1" class="space-y-6">
-                <div class="text-center space-y-3">
-                    <div class="w-16 h-16 bg-champagne-100 rounded-full flex items-center justify-center mx-auto text-champagne-500 text-2xl shadow-inner">
-                        <i class="fa-solid fa-ring"></i>
-                    </div>
-                    <h2 class="text-xl font-serif font-semibold text-stone-800">測出妳隱藏的戀愛密碼</h2>
-                    <p class="text-sm text-stone-600 leading-relaxed">
-                        日本最新流行心理測驗！據說無名指的粗細與長度，反映了妳在感情中的真實靈魂與天生磁場。快來測測看妳是哪一種戀愛人格吧！
-                    </p>
-                </div>
-
-                <div class="bg-champagne-50 p-4 rounded-2xl border border-champagne-200 text-xs text-stone-600 space-y-2">
-                    <p class="font-semibold text-stone-700"><i class="fa-solid fa-circle-info text-rosegold-400 mr-1"></i> 測驗小步驟：</p>
-                    <ol class="list-decimal list-inside space-y-1 pl-1">
-                        <li>準備一條細線或紙條。</li>
-                        <li>繞妳的<span class="font-bold text-stone-800 underline">左手無名指</span>一圈（順順繞，不要拉太緊）。</li>
-                        <li>量出對應的長度（公分 cm）並輸入下方。</li>
-                    </ol>
-                </div>
-
-                <button onclick="goToStep(2)" class="w-full py-3.5 bg-gradient-to-r from-champagne-500 to-rosegold-400 text-white font-medium rounded-xl shadow-md hover:opacity-95 transition active:scale-[0.98] flex items-center justify-center space-x-2">
-                    <span>開始測驗</span>
-                    <i class="fa-solid fa-arrow-right text-xs"></i>
-                </button>
-            </div>
-
-            <!-- STEP 2: Input Circumference -->
-            <div id="step-2" class="space-y-6 hidden">
-                <div class="text-center space-y-2">
-                    <span class="text-xs text-rosegold-400 font-semibold uppercase tracking-wider">Step 2 of 2</span>
-                    <h2 class="text-xl font-serif font-semibold text-stone-800">輸入左手無名指周長</h2>
-                    <p class="text-xs text-stone-500">請滑動下方或直接輸入妳量測到的公分數 (cm)</p>
-                </div>
-
-                <div class="py-4 space-y-6">
-                    <div class="text-center">
-                        <span id="slider-value" class="text-4xl font-serif font-bold gold-gradient-text">5.2</span>
-                        <span class="text-lg font-serif text-stone-600 ml-1">cm</span>
-                    </div>
-
-                    <!-- Range Slider -->
-                    <div class="space-y-2">
-                        <input type="range" id="circumference-input" min="4.5" max="6.2" step="0.1" value="5.2" 
-                            class="w-full h-2 bg-champagne-200 rounded-lg appearance-none cursor-pointer accent-champagne-500"
-                            oninput="updateSliderValue(this.value)">
-                        <div class="flex justify-between text-[11px] text-stone-400 px-1">
-                            <span>4.5 cm (纖細)</span>
-                            <span>5.3 cm (標準)</span>
-                            <span>6.2 cm+ (大器)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex space-x-3">
-                    <button onclick="goToStep(1)" class="w-1/3 py-3 bg-stone-100 text-stone-600 font-medium rounded-xl hover:bg-stone-200 transition text-sm">
-                        上一步
-                    </button>
-                    <button onclick="calculateResult()" class="w-2/3 py-3 bg-gradient-to-r from-champagne-500 to-rosegold-400 text-white font-medium rounded-xl shadow-md hover:opacity-95 transition text-sm flex items-center justify-center space-x-2">
-                        <span>揭曉戀愛人格</span>
-                        <i class="fa-solid fa-sparkles text-xs"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- STEP 3: Result View -->
-            <div id="step-3" class="space-y-6 hidden">
-                <div class="text-center space-y-1">
-                    <span class="text-xs uppercase tracking-widest text-rosegold-500 font-semibold">✨ 測驗結果分析完成 ✨</span>
-                    <h2 class="text-xl font-serif font-bold text-stone-800">妳的專屬戀愛人格</h2>
-                </div>
-
-                <!-- Result Card -->
-                <div class="bg-white/90 p-5 rounded-2xl border border-champagne-300 shadow-sm space-y-4">
-                    <div class="flex items-center space-x-4 border-b border-stone-100 pb-3">
-                        <div id="result-icon-bg" class="w-12 h-12 rounded-2xl bg-champagne-100 flex items-center justify-center text-champagne-500 text-xl shadow-sm">
-                            <i id="result-icon" class="fa-solid fa-cat"></i>
-                        </div>
-                        <div>
-                            <span id="result-type-tag" class="text-[10px] bg-champagne-100 text-champagne-600 px-2 py-0.5 rounded-full font-semibold">精緻小巧型</span>
-                            <h3 id="result-title" class="text-lg font-serif font-bold text-stone-800 mt-0.5">貓系傲嬌療癒系</h3>
-                        </div>
-                    </div>
-
-                    <div class="space-y-2 text-xs text-stone-600 leading-relaxed">
-                        <p><strong class="text-stone-800">尺寸對應：</strong> 左手無名指周長 <span id="result-cm" class="font-bold text-champagne-600">5.2</span> cm（日本圍約 12 號）</p>
-                        <p><strong class="text-stone-800">人格特質：</strong> <span id="result-desc">外表看似獨立自主、甚至有點小傲嬌，但對認定的人會毫無保留展現溫柔與黏人的一面。在感情裡極具品味，懂得製造生活小浪漫。</span></p>
-                        <p><strong class="text-stone-800">運勢小叮嚀：</strong> <span id="result-fortune">近期桃花與金錢運勢極佳，適合與另一半規劃長期美好的未來願景！</span></p>
-                    </div>
-                </div>
-
-                <!-- Action for Boyfriend Reveal -->
-                <div class="space-y-3 pt-2">
-                    <div class="p-3 bg-rosegold-50 rounded-xl border border-rosegold-200 text-center space-y-1">
-                        <p class="text-xs font-semibold text-rosegold-500"><i class="fa-solid fa-heart mr-1"></i> 想把結果偷偷傳給男友或好姊妹嗎？</p>
-                        <p class="text-[11px] text-stone-500">點擊下方按鈕即可複製專屬測驗結果卡片！</p>
-                    </div>
-
-                    <button onclick="copyResultForBoyfriend()" class="w-full py-3 bg-stone-900 text-white font-medium rounded-xl shadow hover:bg-stone-800 transition text-sm flex items-center justify-center space-x-2">
-                        <i class="fa-solid fa-copy text-xs"></i>
-                        <span id="copy-btn-text">複製測驗結果給男友</span>
-                    </button>
-                    
-                    <button onclick="resetQuiz()" class="w-full py-2 text-xs text-stone-400 hover:text-stone-600 transition">
-                        重新測驗
-                    </button>
-                </div>
-            </div>
-
+        <div class="input-group">
+            <label for="size-select">👇 選擇你的左手無名指周長（cm）：</label>
+            <select id="size-select">
+                <option value="" disabled selected>請選擇您的測驗結果範圍...</option>
+                <option value="1">4.5 cm - 4.9 cm （精緻小巧型）</option>
+                <option value="2">5.0 cm - 5.4 cm （溫柔平衡型）</option>
+                <option value="3">5.5 cm - 5.9 cm （大器率性型）</option>
+                <option value="4">6.0 cm 以上 （福氣富貴型）</option>
+            </select>
         </div>
-    </main>
 
-    <!-- Toast Notification -->
-    <div id="toast" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-stone-900/90 text-white text-xs px-4 py-2.5 rounded-full shadow-lg opacity-0 pointer-events-none transition-all duration-300 z-50 flex items-center space-x-2">
-        <i class="fa-solid fa-circle-check text-green-400"></i>
-        <span id="toast-msg">已成功複製結果！趕快傳給他吧 ❤️</span>
+        <button onclick="showResult()">查看我的戀愛人格解析 🔮</button>
     </div>
 
-    <footer class="text-center py-4 text-xs text-stone-400">
-        &copy; 2026 Ring Love Personality Test. Designed with elegance.
-    </footer>
+    <div id="result-screen" class="result-container">
+        <h1>✨ 測驗結果揭曉 ✨</h1>
+        <div class="result-card">
+            <div id="result-tag" class="tag">人格類型</div>
+            <h3 id="result-title">標題</h3>
+            <p id="result-desc">內容描述...</p>
+        </div>
+        <p style="margin-top: 25px; font-size: 14px; color: #7f5539;">✨ 測驗完成！快截圖或把畫面拿給身邊的他/她看看準不準吧！</p>
+        <button onclick="resetQuiz()" style="background-color: #d4a373; margin-top: 10px;">重新測驗 🔄</button>
+    </div>
 
-    <!-- JavaScript Logic -->
-    <script>
-        function updateSliderValue(val) {
-            document.getElementById('slider-value').innerText = val;
+    <div class="footer-note">Made with ❤️ for You</div>
+</div>
+
+<script>
+    const resultsData = {
+        "1": {
+            tag: "貓系人格 🐱",
+            title: "【4.5 - 4.9 cm】精緻小巧型",
+            desc: "獨立、聰明，對生活非常有品味與美感。在感情裡屬於慢熟路線，但只要認定了對方，就會付出百分之百的專注與深情，是伴侶眼中的精緻寶貝。"
+        },
+        "2": {
+            tag: "犬系人格 🐶",
+            title: "【5.0 - 5.4 cm】溫柔平衡型",
+            desc: "善解人意、社交能力極佳，是朋友眼中的溫暖小太陽。對另一半超級貼心、有極高的同理心，總能把生活打理得溫馨又充滿安全感。"
+        },
+        "3": {
+            tag: "女王人格 👑",
+            title: "【5.5 - 5.9 cm】大器率性型",
+            desc: "很有主見、執行力強，職場上是可靠的狠角色。但私底下其實擁有極具反差萌的小女人特質，喜歡被細心呵護，擁有令人羨慕的領導魅力。"
+        },
+        "4": {
+            tag: "聚寶盆人格 🌟",
+            title: "【6.0 cm 以上】福氣富貴型",
+            desc: "天生帶有藝術家或領導者的氣場，金錢運與貴人運極旺。對生活品質有極高堅持，熱愛質感事物，是能把日子過得像藝術品般的幸運兒。"
+        }
+    };
+
+    function showResult() {
+        const select = document.getElementById("size-select");
+        const val = select.value;
+
+        if (!val) {
+            alert("請先選擇你的指圍公分範圍唷！");
+            return;
         }
 
-        function goToStep(stepNumber) {
-            document.getElementById('step-1').classList.add('hidden');
-            document.getElementById('step-2').classList.add('hidden');
-            document.getElementById('step-3').classList.add('hidden');
+        const data = resultsData[val];
+        document.getElementById("result-tag").innerText = data.tag;
+        document.getElementById("result-title").innerText = data.title;
+        document.getElementById("result-desc").innerText = data.desc;
 
-            document.getElementById('step-' + stepNumber).classList.remove('hidden');
-        }
+        document.getElementById("quiz-screen").style.display = "none";
+        document.getElementById("result-screen").style.display = "block";
+    }
 
-        function calculateResult() {
-            const cm = parseFloat(document.getElementById('circumference-input').value);
-            let resultData = {};
+    function resetQuiz() {
+        document.getElementById("size-select").selectedIndex = 0;
+        document.getElementById("quiz-screen").style.display = "block";
+        document.getElementById("result-screen").style.display = "none";
+    }
+</script>
 
-            if (cm <= 4.9) {
-                resultData = {
-                    tag: "精緻小巧型",
-                    title: "貓系傲嬌療癒人格",
-                    icon: "fa-cat",
-                    desc: "外表看似獨立自主、甚至有點小高冷，但對認定的人會毫無保留展現黏人與溫柔的一面。在感情裡極具品味，喜歡優雅細緻的生活儀式感。",
-                    fortune: "近期桃花運與直覺力超強，若有人在此時送妳心儀的小禮物或求婚，絕對是命運的安排！"
-                };
-            } else if (cm >= 5.0 && cm <= 5.4) {
-                resultData = {
-                    tag: "溫柔平衡型",
-                    title: "犬系暖心守護人格",
-                    icon: "fa-dog",
-                    desc: "善解人意、同理心極高，是朋友圈中的溫暖小太陽。在感情中願意為對方付出，重視彼此的日常陪伴與心靈默契。",
-                    fortune: "人際與情感運勢達到巔峰，最適合與另一半解鎖人生下一階段的幸福承諾。"
-                };
-            } else if (cm >= 5.5 && cm <= 5.9) {
-                resultData = {
-                    tag: "大器率性型",
-                    title: "女王知性主導人格",
-                    icon: "fa-crown",
-                    desc: "非常有主見、執行力強，職場上是獨立可靠的狠角色。但私底下其實有反差萌的小女人特質，只在最愛的人面前卸下防備。",
-                    fortune: "事業與財運旺盛，能把生活打理得極具質感，是伴侶眼中的最強支柱與靈魂伴侶。"
-                };
-            } else {
-                resultData = {
-                    tag: "福氣富貴型",
-                    title: "聚寶盆藝術家氣場",
-                    icon: "fa-gem",
-                    desc: "天生帶有獨特的藝術家氣場與領導魅力，金錢運極佳，對生活美學有極高堅持，散發令人無法抗拒的迷人光芒。",
-                    fortune: "貴人運大發，近期無論是生活或感情都將迎來令人驚喜的甜蜜轉折！"
-                };
-            }
-
-            document.getElementById('result-cm').innerText = cm.toFixed(1);
-            document.getElementById('result-tag').innerText = resultData.tag;
-            document.getElementById('result-title').innerText = resultData.title;
-            document.getElementById('result-desc').innerText = resultData.desc;
-            document.getElementById('result-fortune').innerText = resultData.fortune;
-            document.getElementById('result-icon').className = "fa-solid " + resultData.icon;
-
-            goToStep(3);
-        }
-
-        function copyResultForBoyfriend() {
-            const cm = document.getElementById('result-cm').innerText;
-            const title = document.getElementById('result-title').innerText;
-            const tag = document.getElementById('result-tag').innerText;
-
-            const textToCopy = `✨ 我的左手無名指戀愛測驗結果出爐啦！\n` +
-                               `💍 測量尺寸：${cm} cm\n` +
-                               `💖 戀愛人格：【${tag}】${title}\n` +
-                               `快看看這是不是妳心目中的我呀？（暗示ing 👀✨）`;
-
-            // Use document.execCommand for robust iFrame clipboard copy fallback
-            const textarea = document.createElement('textarea');
-            textarea.value = textToCopy;
-            document.body.appendChild(textarea);
-            textarea.select();
-            try {
-                document.execCommand('copy');
-                showToast("已成功複製結果！快傳給男友吧 ❤️");
-            } catch (err) {
-                showToast("複製失敗，請手動截圖分享！");
-            }
-            document.body.removeChild(textarea);
-        }
-
-        function showToast(msg) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toast-msg').innerText = msg;
-            toast.classList.remove('opacity-0', 'pointer-events-none');
-            setTimeout(() => {
-                toast.classList.add('opacity-0', 'pointer-events-none');
-            }, 3000);
-        }
-
-        function resetQuiz() {
-            document.getElementById('circumference-input').value = "5.2";
-            updateSliderValue("5.2");
-            goToStep(1);
-        }
-    </script>
 </body>
 </html>
